@@ -151,10 +151,16 @@ class _DashboardScreenState extends State<DashboardScreen>
                   ),
                   const SizedBox(width: 8),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
+                    ),
                     onPressed: () async {
                       if (textController.text.trim().isNotEmpty) {
                         final task = Task(
-                          id: '', // Will be set by Supabase
+                          id: '',
                           title: textController.text.trim(),
                           isCompleted: false,
                           createdAt: DateTime.now(),
@@ -171,9 +177,8 @@ class _DashboardScreenState extends State<DashboardScreen>
                             _tasks.add(newTask);
                           });
 
-                          if (mounted) {
-                            Navigator.pop(context);
-                          }
+                          if (!context.mounted) return;
+                          Navigator.pop(context);
                         } catch (e) {
                           if (mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -212,6 +217,7 @@ class _DashboardScreenState extends State<DashboardScreen>
         title: const Text('My Tasks'),
         actions: [
           IconButton(
+            tooltip: "Logout",
             icon: const Icon(Icons.logout),
             onPressed: () async {
               final authService = Provider.of<AuthService>(
@@ -219,9 +225,8 @@ class _DashboardScreenState extends State<DashboardScreen>
                 listen: false,
               );
               await authService.signOut();
-              if (mounted) {
-                Navigator.pushReplacementNamed(context, '/login');
-              }
+              if (!context.mounted) return;
+              Navigator.pushReplacementNamed(context, '/login');
             },
           ),
         ],
@@ -277,6 +282,12 @@ class _DashboardScreenState extends State<DashboardScreen>
                     ElevatedButton.icon(
                       onPressed: _showAddTaskDialog,
                       icon: const Icon(Icons.add),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
+                      ),
                       label: const Text('Add Task'),
                     ),
                   ],
