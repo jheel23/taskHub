@@ -12,7 +12,20 @@ A Flutter application for personal task tracking with user authentication, task 
 
 ## Screenshots
 
-[Include screenshots of your app here]
+<table>
+  <tr>
+    <th>Login Screen</th>
+    <th>SignUp Screen</th>
+      <th>Home Screen(No task)</th>
+     <th>Home Screen(With task)</th>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/20936fd1-2b63-41c2-9f75-58a7c939d6bb" alt="Login Screen" width="250"/></td>
+    <td><img src="https://github.com/user-attachments/assets/28bd6929-d6ef-416d-a058-ec90aeff9cab" alt="SignUp Screen" width="250"/></td>
+     <td><img src="https://github.com/user-attachments/assets/63131740-8151-4522-90b7-b5ba26ba60d2" alt="Home Screen(No task)" width="250"/></td>
+     <td><img src="https://github.com/user-attachments/assets/d9d6e588-2d72-4c38-a250-96b87f26dfb8" alt="Home Screen(With task)" width="250"/></td>
+  </tr>
+</table>
 
 ## Setup Instructions
 
@@ -26,26 +39,26 @@ A Flutter application for personal task tracking with user authentication, task 
 ### Installation
 
 1. Clone this repository:
-   \`\`\`
+   ```
    git clone https://github.com/yourusername/mini-taskhub.git
    cd mini-taskhub
-   \`\`\`
+   ```
 
-2. Install dependencies:
-   \`\`\`
+3. Install dependencies:
+   ```
    flutter pub get
-   \`\`\`
+   ```
 
-3. Create a `.env` file in the root directory with your Supabase credentials:
-   \`\`\`
+4. Create a `.env` file in the root directory with your Supabase credentials:
+   ```
    SUPABASE_URL=your_supabase_url
    SUPABASE_ANON_KEY=your_supabase_anon_key
-   \`\`\`
+   ```
 
-4. Run the app:
-   \`\`\`
+5. Run the app:
+   ```
    flutter run
-   \`\`\`
+   ```
 
 ### Supabase Setup
 
@@ -53,7 +66,7 @@ A Flutter application for personal task tracking with user authentication, task 
 2. Set up authentication (Email/Password provider)
 3. Create a 'tasks' table with the following schema:
 
-\`\`\`sql
+```sql
 CREATE TABLE tasks (
   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   title TEXT NOT NULL,
@@ -70,7 +83,7 @@ CREATE POLICY "Users can only access their own tasks"
 
 -- Enable Row Level Security
 ALTER TABLE tasks ENABLE ROW LEVEL SECURITY;
-\`\`\`
+```
 
 ## Hot Reload vs. Hot Restart
 
@@ -104,10 +117,6 @@ ALTER TABLE tasks ENABLE ROW LEVEL SECURITY;
 ## Testing
 
 Run tests using:
-\`\`\`
+```
 flutter test
-\`\`\`
-
-## License
-
-[Specify your license]
+```
